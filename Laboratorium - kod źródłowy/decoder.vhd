@@ -7,7 +7,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity decoder is
 
 port(
-	signal in: in std_logic_vector(7 downto 0);
+	signal in: in std_logic_vector(3 downto 0);
 	signal out: out std_logic_vector(7 downto 0)
 	);
 	
