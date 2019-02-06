@@ -1,0 +1,38 @@
+NET "clock" LOC = "T9" ; # 50 MHz clock
+
+NET "slide_switch<7>" LOC = "K13" ; # input active high (when in UP position)
+NET "slide_switch<6>" LOC = "K14" ; # input active high (when in UP position)
+NET "slide_switch<5>" LOC = "J13" ; # input active high (when in UP position)
+NET "slide_switch<4>" LOC = "J14" ; # input active high (when in UP position)
+NET "slide_switch<3>" LOC = "H13" ; # input active high (when in UP position)
+NET "slide_switch<2>" LOC = "H14" ; # input active high (when in UP position)
+NET "slide_switch<1>" LOC = "G12" ; # input active high (when in UP position)
+NET "slide_switch<0>" LOC = "F12" ; # input active high (when in UP position)
+
+#NET "button<3>" LOC = "L13" ; # input active high (when pressed)
+#NET "button<2>" LOC = "L13" ; # input active high (when pressed)
+NET "button<1>" LOC = "M14" ; # input active high (when pressed)
+NET "button<0>" LOC = "M13" ; # input active high (when pressed)
+
+#NET "led<7>" LOC = "K12" ; # output active high
+#NET "led<6>" LOC = "P14" ; # output active high
+#NET "led<5>" LOC = "L12" ; # output active high
+#NET "led<4>" LOC = "N14" ; # output active high
+#NET "led<3>" LOC = "P13" ; # output active high
+#NET "led<2>" LOC = "N12" ; # output active high
+#NET "led<1>" LOC = "P12" ; # output active high
+#NET "led<0>" LOC = "P11" ; # output active high
+
+NET "led7seg_anode<3>" LOC = "E13" ; # output active low, leftmost digit 
+NET "led7seg_anode<2>" LOC = "F14" ; # output active low
+NET "led7seg_anode<1>" LOC = "G14" ; # output active low
+NET "led7seg_anode<0>" LOC = "d14" ; # output active low, rightmost digit
+
+NET "led7seg_segment<7>" LOC = "E14" ; # output active low, segment 'a'
+NET "led7seg_segment<6>" LOC = "G13" ; # output active low, segment 'b'
+NET "led7seg_segment<5>" LOC = "N15" ; # output active low, segment 'c'
+NET "led7seg_segment<4>" LOC = "P15" ; # output active low, segment 'd'
+NET "led7seg_segment<3>" LOC = "R16" ; # output active low, segment 'e'
+NET "led7seg_segment<2>" LOC = "F13" ; # output active low, segment 'f'
+NET "led7seg_segment<1>" LOC = "N16" ; # output active low, segment 'g'
+NET "led7seg_segment<0>" LOC = "P16" ; # output active low, segment 'dp'
