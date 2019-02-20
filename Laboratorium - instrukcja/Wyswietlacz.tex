@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage[MeX]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\linespread{1.3}
+\title{Wyswietlacz 7 segmentowy}
+\begin{document}
+\maketitle
+\section{Zasada działania}
+Kolejnym układem którego działanie zostanie zaprezentowane jest wyświetlacz 7 segmentowy. Taki wyświetlacz, dzięki swojej prostocie, używany jest głównie do wyświetlania liczb. Pojedynczy wyświetlacz składa się z 7 segmentów, które zostają podświetlane zależnie od danych jakie chcemy wyświetlić..(obrazek). W laboratorium występuje  poczwórny wyświetlacz. Taki wyświetlacz posiada jedną 8 bitową linię danych oraz 4 linie aktywujący pojedynczy wyświetlacz. Z tego powodu jeśli na każdym wyświetlaczu chcemy wyświetlić inny znak(np. zrobić stoper) musimy zastosować pewną sztuczkę. Mianowicie dane na każdy z wyświetlaczy należy wysyłać kolejno. Najpierw wysyłamy na pierwszy wyświetlacz, następnie na drugi itp. Aby znak został wyświetlony tylko na jednym wyświetlaczu, na linii aktywującej konkretny wyświetlacz powinna wystąpić wartość 0, a na innych liniach 1. Aby taki układ działał poprawnie, musi działać z pewną częstotliwością. Częstotliwość ta musi być odpowiednio wysoka, aby ludzkie oko nie wychwyciło migotania obrazu. W tym zadaniu została przyjęta 1kHz. Do całości tego zadania został użyty dzielnik częstotliwości z poprzedniego zadania, aby częstotliwość taktowania wyświetlacza nie była zbyt wysoka. 
+\end{document}
