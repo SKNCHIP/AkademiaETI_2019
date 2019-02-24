@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity display_led7seg_controler is
+entity display_led7seg_controller is
 	 generic ( DOT_POSITION : integer range 0 to 3 := 1);
     port ( clock_in : in  STD_LOGIC;
 			  next_digit_in : in STD_LOGIC;
@@ -12,9 +12,9 @@ entity display_led7seg_controler is
 			  digit_3_in : in  STD_LOGIC_VECTOR (3 downto 0);
            display_segments_out : out  STD_LOGIC_VECTOR (7 downto 0);
 			  display_catodes_out : out  STD_LOGIC_VECTOR (3 downto 0));
-end display_led7seg_controler;
+end display_led7seg_controller;
 
-architecture Behavioral of display_led7seg_controler is
+architecture Behavioral of display_led7seg_controller is
 	function hex_to_7seg (hex : STD_LOGIC_VECTOR( 3 downto 0)) return STD_LOGIC_VECTOR is
 	begin
 			case hex is				 --ABCDEFG Segments
