@@ -10,11 +10,6 @@ BEGIN SCHEMATIC
         SIGNAL digit_2_3(3:0)
         SIGNAL XLXN_174
         SIGNAL digit_0_1(7:4)
-        SIGNAL XLXN_208
-        SIGNAL XLXN_209
-        SIGNAL XLXN_214
-        SIGNAL XLXN_218(3:0)
-        SIGNAL XLXN_222
         SIGNAL XLXN_167(7:0)
         SIGNAL led7seg_segment(7:0)
         SIGNAL led7seg_anode(3:0)
@@ -24,8 +19,6 @@ BEGIN SCHEMATIC
         SIGNAL XLXN_204
         SIGNAL digit_2_3(7:4)
         SIGNAL XLXN_189
-        SIGNAL XLXN_282
-        SIGNAL XLXN_190(7:0)
         SIGNAL XLXN_281(7:0)
         SIGNAL slide_switch(7:0)
         SIGNAL button(1)
@@ -35,14 +28,11 @@ BEGIN SCHEMATIC
         SIGNAL digit_2_3(7:0)
         SIGNAL button(0)
         SIGNAL button(1:0)
-        SIGNAL XLXN_255
-        SIGNAL XLXN_280
-        SIGNAL XLXN_310
         PORT Output led7seg_segment(7:0)
         PORT Output led7seg_anode(3:0)
         PORT Input clock
         PORT Input slide_switch(7:0)
-        PORT Output button(1:0)
+        PORT Input button(1:0)
         BEGIN BLOCKDEF ibuf
             TIMESTAMP 2000 1 1 10 10 10
             LINE N 64 0 64 -64 
@@ -50,26 +40,6 @@ BEGIN SCHEMATIC
             LINE N 64 -64 128 -32 
             LINE N 224 -32 128 -32 
             LINE N 0 -32 64 -32 
-        END BLOCKDEF
-        BEGIN BLOCKDEF display_led7seg_controler
-            TIMESTAMP 2019 2 6 22 36 38
-            LINE N 64 -288 0 -288 
-            RECTANGLE N 544 -300 608 -276 
-            LINE N 544 -288 608 -288 
-            LINE N 80 -288 64 -304 
-            LINE N 80 -288 64 -272 
-            RECTANGLE N 64 -320 544 64 
-            LINE N 64 -224 0 -224 
-            RECTANGLE N 0 -172 64 -148 
-            LINE N 64 -160 0 -160 
-            RECTANGLE N 0 -108 64 -84 
-            LINE N 64 -96 0 -96 
-            RECTANGLE N 0 -44 64 -20 
-            LINE N 64 -32 0 -32 
-            RECTANGLE N 0 20 64 44 
-            LINE N 64 32 0 32 
-            RECTANGLE N 544 20 608 44 
-            LINE N 544 32 608 32 
         END BLOCKDEF
         BEGIN BLOCKDEF obuf8
             TIMESTAMP 2000 1 1 10 10 10
@@ -134,6 +104,26 @@ BEGIN SCHEMATIC
             LINE N 64 -48 80 -64 
             RECTANGLE N 64 -128 352 64 
         END BLOCKDEF
+        BEGIN BLOCKDEF display_led7seg_controller
+            TIMESTAMP 2019 2 24 14 24 17
+            LINE N 64 -288 0 -288 
+            RECTANGLE N 544 -300 608 -276 
+            LINE N 544 -288 608 -288 
+            LINE N 80 -288 64 -304 
+            LINE N 80 -288 64 -272 
+            RECTANGLE N 64 -320 544 64 
+            LINE N 64 -224 0 -224 
+            RECTANGLE N 0 -172 64 -148 
+            LINE N 64 -160 0 -160 
+            RECTANGLE N 0 -108 64 -84 
+            LINE N 64 -96 0 -96 
+            RECTANGLE N 0 -44 64 -20 
+            LINE N 64 -32 0 -32 
+            RECTANGLE N 0 20 64 44 
+            LINE N 64 32 0 32 
+            RECTANGLE N 544 20 608 44 
+            LINE N 544 32 608 32 
+        END BLOCKDEF
         BEGIN BLOCK XLXI_76 obuf8
             PIN I(7:0) XLXN_167(7:0)
             PIN O(7:0) led7seg_segment(7:0)
@@ -142,25 +132,15 @@ BEGIN SCHEMATIC
             PIN buffer_in(3:0) XLXN_216(3:0)
             PIN buffer_out(3:0) led7seg_anode(3:0)
         END BLOCK
-        BEGIN BLOCK XLXI_73 display_led7seg_controler
-            BEGIN ATTR DOT_POSITION 2
-                EDITNAME all:1 sch:0
-                VHDL all:0 gm:1
-                VALUETYPE Integer 0 3
-            END ATTR
-            PIN clock_in XLXN_174
-            PIN display_segments_out(7:0) XLXN_167(7:0)
-            PIN next_digit_in XLXN_205
-            PIN digit_0_in(3:0) digit_0_1(3:0)
-            PIN digit_1_in(3:0) digit_0_1(7:4)
-            PIN digit_2_in(3:0) digit_2_3(3:0)
-            PIN digit_3_in(3:0) digit_2_3(7:4)
-            PIN display_catodes_out(3:0) XLXN_216(3:0)
-        END BLOCK
         BEGIN BLOCK XLXI_97 gnd
             PIN G XLXN_204
         END BLOCK
         BEGIN BLOCK XLXI_96 frequency_divider
+            BEGIN ATTR DIVIDER 10000
+                EDITNAME all:1 sch:0
+                VHDL all:0 gm:1
+                VALUETYPE Integer 1 2147483647
+            END ATTR
             PIN clock_in XLXN_174
             PIN frequency_out XLXN_205
             PIN reset_in XLXN_204
@@ -198,6 +178,16 @@ BEGIN SCHEMATIC
             PIN I button(1)
             PIN O XLXN_198
         END BLOCK
+        BEGIN BLOCK XLXI_98 display_led7seg_controller
+            PIN clock_in XLXN_174
+            PIN display_segments_out(7:0) XLXN_167(7:0)
+            PIN next_digit_in XLXN_205
+            PIN digit_0_in(3:0) digit_0_1(3:0)
+            PIN digit_1_in(3:0) digit_0_1(7:4)
+            PIN digit_2_in(3:0) digit_2_3(3:0)
+            PIN digit_3_in(3:0) digit_2_3(7:4)
+            PIN display_catodes_out(3:0) XLXN_216(3:0)
+        END BLOCK
     END NETLIST
     BEGIN SHEET 1 3520 2720
         BEGIN BRANCH digit_2_3(3:0)
@@ -234,8 +224,6 @@ BEGIN SCHEMATIC
             WIRE 1728 448 1728 544
             WIRE 1728 448 2064 448
         END BRANCH
-        BEGIN INSTANCE XLXI_73 2064 672 R0
-        END INSTANCE
         BEGIN BRANCH XLXN_204
             WIRE 1168 608 1200 608
             WIRE 1168 608 1168 640
@@ -352,5 +340,7 @@ BEGIN SCHEMATIC
         BUSTAP 1824 1632 1824 1536
         BUSTAP 1888 2016 1888 1920
         BUSTAP 1952 2016 1952 1920
+        BEGIN INSTANCE XLXI_98 2064 672 R0
+        END INSTANCE
     END SHEET
 END SCHEMATIC

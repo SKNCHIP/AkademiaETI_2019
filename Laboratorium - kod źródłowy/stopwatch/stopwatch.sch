@@ -13,19 +13,11 @@ BEGIN SCHEMATIC
         SIGNAL XLXN_141
         SIGNAL XLXN_142
         SIGNAL XLXN_143
-        SIGNAL XLXN_174
-        SIGNAL XLXN_181(3:0)
         SIGNAL XLXN_17
         SIGNAL XLXN_2
         SIGNAL XLXN_15
-        SIGNAL XLXN_210(3:0)
-        SIGNAL XLXN_211(3:0)
-        SIGNAL XLXN_212(3:0)
-        SIGNAL XLXN_213(3:0)
-        SIGNAL XLXN_214
         SIGNAL XLXN_167(7:0)
         SIGNAL led7seg_segment(7:0)
-        SIGNAL XLXN_219
         SIGNAL XLXN_185
         SIGNAL XLXN_184
         SIGNAL XLXN_209(3:0)
@@ -104,26 +96,6 @@ BEGIN SCHEMATIC
             LINE N 400 -160 464 -160 
             LINE N 400 -96 464 -96 
         END BLOCKDEF
-        BEGIN BLOCKDEF display_led7seg_controler
-            TIMESTAMP 2019 2 6 22 23 18
-            LINE N 64 -288 0 -288 
-            RECTANGLE N 544 -300 608 -276 
-            LINE N 544 -288 608 -288 
-            LINE N 80 -288 64 -304 
-            LINE N 80 -288 64 -272 
-            RECTANGLE N 64 -320 544 64 
-            LINE N 64 -224 0 -224 
-            RECTANGLE N 0 -172 64 -148 
-            LINE N 64 -160 0 -160 
-            RECTANGLE N 0 -108 64 -84 
-            LINE N 64 -96 0 -96 
-            RECTANGLE N 0 -44 64 -20 
-            LINE N 64 -32 0 -32 
-            RECTANGLE N 0 20 64 44 
-            LINE N 64 32 0 32 
-            RECTANGLE N 544 20 608 44 
-            LINE N 544 32 608 32 
-        END BLOCKDEF
         BEGIN BLOCKDEF obuf8
             TIMESTAMP 2000 1 1 10 10 10
             LINE N 0 -32 64 -32 
@@ -143,6 +115,26 @@ BEGIN SCHEMATIC
             LINE N 128 -32 64 0 
             LINE N 128 -32 224 -32 
             RECTANGLE N 128 -44 224 -20 
+        END BLOCKDEF
+        BEGIN BLOCKDEF display_led7seg_controller
+            TIMESTAMP 2019 2 24 14 24 17
+            LINE N 64 -288 0 -288 
+            RECTANGLE N 544 -300 608 -276 
+            LINE N 544 -288 608 -288 
+            LINE N 80 -288 64 -304 
+            LINE N 80 -288 64 -272 
+            RECTANGLE N 64 -320 544 64 
+            LINE N 64 -224 0 -224 
+            RECTANGLE N 0 -172 64 -148 
+            LINE N 64 -160 0 -160 
+            RECTANGLE N 0 -108 64 -84 
+            LINE N 64 -96 0 -96 
+            RECTANGLE N 0 -44 64 -20 
+            LINE N 64 -32 0 -32 
+            RECTANGLE N 0 20 64 44 
+            LINE N 64 32 0 32 
+            RECTANGLE N 544 20 608 44 
+            LINE N 544 32 608 32 
         END BLOCKDEF
         BEGIN BLOCK XLXI_4 ibuf
             PIN I clock
@@ -212,21 +204,6 @@ BEGIN SCHEMATIC
             PIN I XLXN_2
             PIN O XLXN_1
         END BLOCK
-        BEGIN BLOCK XLXI_73 display_led7seg_controler
-            BEGIN ATTR DOT_POSITION 2
-                EDITNAME all:1 sch:0
-                VHDL all:0 gm:1
-                VALUETYPE Integer 0 3
-            END ATTR
-            PIN clock_in XLXN_229
-            PIN display_segments_out(7:0) XLXN_167(7:0)
-            PIN next_digit_in XLXN_185
-            PIN digit_0_in(3:0) XLXN_209(3:0)
-            PIN digit_1_in(3:0) XLXN_208(3:0)
-            PIN digit_2_in(3:0) XLXN_207(3:0)
-            PIN digit_3_in(3:0) XLXN_206(3:0)
-            PIN display_catodes_out(3:0) XLXN_237(3:0)
-        END BLOCK
         BEGIN BLOCK XLXI_76 obuf8
             PIN I(7:0) XLXN_167(7:0)
             PIN O(7:0) led7seg_segment(7:0)
@@ -247,6 +224,16 @@ BEGIN SCHEMATIC
         BEGIN BLOCK XLXI_101 OBUF4_magistral
             PIN buffer_in(3:0) XLXN_237(3:0)
             PIN buffer_out(3:0) led7seg_anode(3:0)
+        END BLOCK
+        BEGIN BLOCK XLXI_102 display_led7seg_controller
+            PIN clock_in XLXN_229
+            PIN display_segments_out(7:0) XLXN_167(7:0)
+            PIN next_digit_in XLXN_185
+            PIN digit_0_in(3:0) XLXN_209(3:0)
+            PIN digit_1_in(3:0) XLXN_208(3:0)
+            PIN digit_2_in(3:0) XLXN_207(3:0)
+            PIN digit_3_in(3:0) XLXN_206(3:0)
+            PIN display_catodes_out(3:0) XLXN_237(3:0)
         END BLOCK
     END NETLIST
     BEGIN SHEET 1 3520 2720
@@ -343,8 +330,6 @@ BEGIN SCHEMATIC
             WIRE 3344 960 3344 1424
             WIRE 3328 1424 3344 1424
         END BRANCH
-        BEGIN INSTANCE XLXI_73 2064 864 R0
-        END INSTANCE
         INSTANCE XLXI_76 2704 608 R0
         INSTANCE XLXI_88 720 976 R0
         IOMARKER 2960 576 led7seg_segment(7:0) R0 28
@@ -410,5 +395,7 @@ BEGIN SCHEMATIC
         BEGIN BRANCH XLXN_237(3:0)
             WIRE 2672 896 2704 896
         END BRANCH
+        BEGIN INSTANCE XLXI_102 2064 864 R0
+        END INSTANCE
     END SHEET
 END SCHEMATIC
