@@ -136,6 +136,11 @@ BEGIN SCHEMATIC
             PIN G XLXN_204
         END BLOCK
         BEGIN BLOCK XLXI_96 frequency_divider
+            BEGIN ATTR DIVIDER 10000
+                EDITNAME all:1 sch:0
+                VHDL all:0 gm:1
+                VALUETYPE Integer 1 2147483647
+            END ATTR
             PIN clock_in XLXN_174
             PIN frequency_out XLXN_205
             PIN reset_in XLXN_204

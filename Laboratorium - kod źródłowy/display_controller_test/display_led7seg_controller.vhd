@@ -72,8 +72,6 @@ begin
 														not hex_to_7seg(digit_3_in) when 3,
 														(others => '1') when others;
 														
-	with current_display select
-		display_segments_out(0) <= '0' when DOT_POSITION,
-											'1' when others;
+	display_segments_out(0) <= '0' when current_display = DOT_POSITION else	'1';
 											
 end Behavioral;
